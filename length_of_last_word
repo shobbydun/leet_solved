@@ -1,0 +1,11 @@
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+
+        i,length = len(s) -1,0  #position of the last word at the end
+        while s[i] == "": #if there is a whitespace decrement to reach the word
+            i -= 1  #decrement
+        while i >= 0 and s[i] != "": #count characters if not in whitespace
+            length += 1 #increment the number
+            i -= 1  #avoid infinite loop thus decrement pointer
+        return length
+        
