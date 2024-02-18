@@ -1,0 +1,9 @@
+class Solution:
+    def removeElement(self, nums: list[int], val:int) -> int:
+        k = 0  #index 0
+        for i in range(len(nums)):  #length of num
+            if nums[i] != val: #if nums not value of value we perfom the swap otherwise ignore it
+                              #taking values of nums not in val and placing them at the beginning
+                nums[k] = nums[i]  #where to put the next value
+                k += 1
+        return k  #return k itself
