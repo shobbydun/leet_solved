@@ -1,0 +1,37 @@
+
+"solving it by converting the integer to a string which is against the instructions"
+
+x = input("Enter your value: ")
+
+reverse = x[::-1]   #slicing the value and stepig backwards
+
+if(x == reverse):
+    print("palindroome")
+
+else:
+    print("no")
+
+
+
+
+
+
+" Solved without converting integer to string"
+
+class solution:
+    def isPalindrome(self, x: int) -> bool:
+        if x < 0: return False                      "return false if its -1 since not palindrome"
+
+        div = 1                                     "original divider is 1"
+        while x >= 10 * div:                        "if value above 10 the divider must be in terms of the number"
+            div *= 10                               "multiplying the div by 10 too get the desired div"
+
+        while x:
+            rightside = x % 10                      "to get the right digit"
+            leftside =  x // div                    "getting the left digit divide by the acquired divider"
+
+            if leftside != rightside: return False  "compare the sides if not equal not palindrome"
+
+            x = (x % div) // 10                     "chopping off the value both left and right side"
+            div = div / 100                         "chop of two digits to update the value"
+        return True
