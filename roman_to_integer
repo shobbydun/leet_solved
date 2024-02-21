@@ -1,0 +1,17 @@
+class solution:
+    def rom_to_int(self,s:str) -> int:
+        "if its large value then a small value add them"
+        "if its a small value then a large value then substract"
+
+        roman = {"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000} #roman identities
+
+        result = 0 #value of result
+
+        for i in range(len(s)):    #iterating through the length
+            if i + 1 < len(s) and roman[s[i]] < roman[s[i+1]]:  #checking if its in balance
+                res -= roman[s[i]]  #substract the result because its small value then large value
+
+            else:
+                res += roman[s[i]]  #add because the large value starts then the small value
+
+        return result
