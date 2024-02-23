@@ -1,0 +1,20 @@
+class solution:
+    def isParentheses(self,s:str) -> bool:
+        stack = [] #data structure
+
+        close_open_parentheses = {")" : "(" , "]":"[]", "}":"{" }  #hashmaps to state and map the parentheses
+
+        for c in s: #loop through every charcter
+            if c in close_open_parentheses: #check if character isclosing parentheses coz keys in the map are closing parentheses
+                if stack and stack[-1] == close_open_parentheses[c]:  #make sure its not empty and they match to values in the stack
+                    stack.pop()  #pop from start and so on
+
+                else:
+                    return False  #otherwise its false
+                
+            else:
+                stack.append(c)  #if we get an open parentheses we can get a new opening and so on
+
+        return True if not stack else False  #if our stack is empty true otherwise false
+
+
