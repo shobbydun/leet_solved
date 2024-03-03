@@ -1,0 +1,14 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        nums1 = {n:i for i , n in enumerate(nums1)}  #hashmap to intialize every single value index
+        res = [-1] * len(nums1) #result in same line
+
+        for i in range(len(nums2)):   #go through every value 
+            if nums2[i] not in nums1:  #if it shows up in nums1 do nested loop and if not skip
+                continue
+            for j in range(i + 1, len(nums2)): #look at the values afer the original value
+                if nums2[j] > nums2[i]: #look for the values greater than the original value
+                    id = nums1[nums2[i]] #get the index then get the value.
+                    res[id] = nums2[j]
+                    break
+        return res
