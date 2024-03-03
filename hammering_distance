@@ -1,0 +1,16 @@
+def hammingDistance(x, y):
+    # Perform exclusive or to find bits that are different 
+    ex_or = x ^ y  #if bits different result 1 otherwise 0
+    
+    # Initialize a variable to count set bits
+    distance = 0  #keep track of hammering distance
+    
+    # Count the number of set bits in xor_result
+    while ex_or:
+        # Increment distance if the least significant bit is 1
+        distance += ex_or & 1
+        # Shift right to check the next bit
+        ex_or >>= 1
+        
+    return distance
+
