@@ -1,0 +1,10 @@
+class Solution:
+    def findComplement(self, num: int) -> int:
+        var = num
+        bit = 1
+        while var:  #if var exists...
+            num = num ^ bit 
+            bit = bit << 1 #move bit to the left by one
+            var = var >> 1 #move the var to the right by one
+
+        return num
