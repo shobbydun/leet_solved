@@ -1,0 +1,12 @@
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        res = 0  #declare an initializer
+
+        for i in range(32):  #go through the whole input
+            bit = (n >> i) & 1  #shifting n to the i so as to have the target bit in the ones spot
+            #and it with one so as to be either one or zero
+            res = res | (bit << (31 - i))  #updating it in the reverse order ..by shifiting our bit to the right
+            #putting value in the 31st bit keep doing that
+        return res
+
+        
