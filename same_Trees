@@ -1,0 +1,15 @@
+
+class Solution:
+    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+        if not p and not q: #if both trees empty return true thus empty trees both equal
+            return True
+
+        if not p or not q or p.val != q.val:  #only one of them is null then they are not equal
+        #values are not the same thus false
+            return False
+
+        return( #reccursive tree
+            self.isSameTree(p.left, q.left) and
+            self.isSameTree(p.right, q.right) #want to know if both right and lest are equal 
+        )
+        
