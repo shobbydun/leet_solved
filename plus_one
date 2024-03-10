@@ -1,0 +1,21 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        digits = digits[::-1]  #reverse the digits
+        carry_one, i = 1, 0
+
+        while carry_one:  #the carry one when 9+1
+            if i < len(digits):
+                if digits[i] == 9: #if its 9 then there is a carry
+                    digits[i] == 0
+                else:
+                    digits[i] += 1
+                    carry_one = 0 #no carry if not nine
+            else:
+                digits.append(1) 
+                carry_one = 0
+
+            i += 1
+
+        return digits[::-1] #return digit to norm
+
+        
