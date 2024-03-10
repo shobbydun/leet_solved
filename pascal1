@@ -1,0 +1,17 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        result = [[1]]  #value of first row
+
+        for i in range(numRows - 1): #we have already defined the first row thus range is -1
+
+            temporary_array = [0] + result[-1] + [0]  #addign zeros on the age of the row to sum the edges
+            row = []  #build up next row
+            
+            for j in range(len(result[-1]) + 1):
+                 #addign 1 to the length of the rows
+                 row.append(temporary_array[j] + temporary_array[j+1]) #the pointers to add are appended
+
+            result.append(row)  
+        return result
+
+
