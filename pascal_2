@@ -1,0 +1,14 @@
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        res = [1] #first value of row1
+
+        for i in range(rowIndex): #iterate through the range
+            next_row = [0] * (len(res) +1 )  # the 0 adds zero to all rows.checking length of previous row
+            for j in range(len(res)):  #iterate over every value in previous row 
+
+                next_row[j] += res[j]  # add that to the child at next row
+                next_row[j+1] += res[j]     #also do that to the next row    
+
+            res = next_row #update result
+
+        return res
