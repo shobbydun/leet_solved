@@ -1,0 +1,23 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+
+        def depth_first_search(node,current_sum): #use algorithm and call node and the sum at hand
+            if not node:
+                return False #if not node
+
+            current_sum += node.val  #add node values
+
+            if not node.left and not node.right: #if no child
+                return current_sum == targetSum  #check if cuurentsum equal target
+
+            return(depth_first_search(node.left, current_sum) or  #if not run depth_first_search on both right and left side... if any true return true
+                    depth_first_search(node.right, current_sum))
+
+        return depth_first_search(root,0) #call depth_first_search passing root
+        
