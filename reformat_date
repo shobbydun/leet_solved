@@ -1,0 +1,30 @@
+class Solution:
+    def reformatDate(self, date: str) -> str:
+
+        # Split the date string into individual components
+        slot = date.split()
+
+        #Extract the day
+        try:
+            day = str(int(slot[0][0:2]))
+
+        except:
+            day = str(int(slot[0][0:1]))
+
+        #Extract month and convert it to its corresponding numerical representation
+
+        month = str(["Jan", "Feb", "Mar", "Apr", "May",
+        "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        .index(slot[1])+1)
+
+        # Extract year
+        year = slot[2]
+
+        # Helper function to pad single-digit month and day with leading zeros
+        def p(x):
+            if len(x) < 2:
+                return "0" + x
+            return x
+
+        # Format the date in "YYYY-MM-DD" format and return
+        return year+ "-" + p(month) + "-" + p(day)
