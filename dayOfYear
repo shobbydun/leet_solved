@@ -1,0 +1,32 @@
+
+class Solution:
+    def dayOfYear(self,date:str) -> int:
+
+        m = re.match("(\d+)-(\d+)-(\d+)", date) # Using regular expression to extract year, month, and day
+
+        yr,mon,day = map(int, list(m.groups()))
+
+        # Checking if it's a leap year
+        leap_year = False
+        if yr % 4 == 0:
+            leap_year = True
+
+            if yr % 100 == 0:
+                leap_year = False
+
+                if yr % 400 == 0:
+                    leap_year = True
+
+        # Define days in months
+        month_days = [
+            31,28,31,30,31,30,31,31,30,31,30,31
+        ]
+
+        # Adjusting month index
+        if leap_year:
+            month_days[1] += 1
+
+        mon -= 1
+
+        # Calculating day of the year
+        return sum(month_days[:mon]) + day
